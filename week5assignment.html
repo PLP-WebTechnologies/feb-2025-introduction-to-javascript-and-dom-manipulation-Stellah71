@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    button {
+      margin: 10px 0;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #dynamicBox {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="main-heading">Welcome to My Page</h1>
+  </header>
+
+  <main>
+    <section>
+      <p id="intro">This is a simple paragraph that will change.</p>
+      <button id="changeTextBtn">Change Text</button>
+    </section>
+
+    <article>
+      <p id="colorText">Watch my color change!</p>
+      <button id="changeColorBtn">Change Color</button>
+    </article>
+
+    <section>
+      <button id="toggleBoxBtn">Add/Remove Box</button>
+      <div id="boxContainer"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 My Website</p>
+  </footer>
+
+  <script>
+    // Change text content dynamically
+    document.getElementById("changeTextBtn").addEventListener("click", () => {
+      document.getElementById("intro").textContent = "The text has been changed dynamically!";
+    });
+
+    // Modify CSS styles via JavaScript
+    document.getElementById("changeColorBtn").addEventListener("click", () => {
+      const colorText = document.getElementById("colorText");
+      colorText.style.color = "blue";
+      colorText.style.fontWeight = "bold";
+    });
+
+    // Add or remove an element dynamically
+    document.getElementById("toggleBoxBtn").addEventListener("click", () => {
+      const container = document.getElementById("boxContainer");
+      const existingBox = document.getElementById("dynamicBox");
+
+      if (existingBox) {
+        container.removeChild(existingBox);
+      } else {
+        const box = document.createElement("div");
+        box.id = "dynamicBox";
+        box.textContent = "I'm a new box!";
+        container.appendChild(box);
+      }
+    });
+  </script>
+</body>
+</html>
